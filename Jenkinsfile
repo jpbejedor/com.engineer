@@ -10,7 +10,7 @@ node {
 	
   stage('Sonar Publish'){
   def scannerHome = tool name: 'SonarQube'
-	  withSonarQubeEnv('My SonarQube Server') {
+	  withSonarQubeEnv('SonarQube') {
       sh "${scannerHome}/bin/sonar-scanner"
     }
   }
