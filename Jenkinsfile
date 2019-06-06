@@ -13,5 +13,5 @@ node {
 	  withSonarQubeEnv('My SonarQube Server') {
       sh "${scannerHome}/bin/sonar-scanner"
     }
-
+  }
 }
