@@ -15,8 +15,7 @@ node {
     }
   }	
 stage ('Artifactory Deploy'){
-def server = Artifactory.server('MyArtifactory')
-def localhost = 	
+def server = Artifactory.server('MyArtifactory')	
 def rtMaven = Artifactory.newMavenBuild()
 rtMaven.resolver releaseRepo: 'maven', snapshotRepo: 'maven'
 rtMaven.deployer server: server, releaseRepo: 'lib-release-local', snapshotRepo: 'lib-snapshot-local'
