@@ -17,7 +17,7 @@ node {
 stage ('Artifactory Deploy'){
 def server = Artifactory.server('MyArtifactory')
 def rtMaven = Artifactory.newMavenBuild()
-rtMaven.resolver server: server, releaseRepo: 'lib-release-local', snapshotRepo: 'lib-snapshot-local'
+rtMaven.resolver server: server, releaseRepo: 'lib-release', snapshotRepo: 'lib-snapshot'
 rtMaven.deployer server: server, releaseRepo: 'lib-release-local', snapshotRepo: 'lib-snapshot-local'
 rtMaven.tool = 'maven3.6.1'
 def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
