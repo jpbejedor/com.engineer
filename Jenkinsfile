@@ -15,6 +15,6 @@ node {
     }
   }
   stage('Upload'){
-      curl -u admin:password -T /Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/ "http://localhost:8081/artifactory/lib-snapshot-local/"
+  curl -u<USERNAME>:<PASSWORD> -T <PATH_TO_FILE> "http://localhost:8081/artifactory/lib-snapshot-local/<TARGET_FILE_PATH>"
   }
 }
