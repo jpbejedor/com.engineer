@@ -5,7 +5,7 @@ node {
     
   stage('BUILD'){
   def mvnHome = tool name: 'maven3.6.1', type: 'maven'
-    sh "${mvnHome}/bin/mvn clean package"
+    sh "${mvnHome}/bin/mvn clean deploy"
    }
 	
   stage('TEST'){
