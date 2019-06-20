@@ -16,6 +16,5 @@ node {
   
   stage('Upload'){
       curl -uadmin:password -T /Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/ "http://localhost:8081/artifactory/lib-snapshot-local/"
-    }  
   }
 }
