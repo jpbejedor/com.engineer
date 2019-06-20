@@ -13,5 +13,9 @@ node {
 	  withSonarQubeEnv('SonarQube') {
       sh "${scannerHome}/bin/sonar-scanner"
     }
+  
+  stage('Upload'){
+      curl -u admin:password -T /Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/ "http://localhost:8081/artifactory/lib-snapshot-local/"
+    }  
   }
 }
