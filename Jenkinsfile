@@ -15,7 +15,7 @@ node {
     }
   }
 	
-  stage ('Artifactory Deploy'){
+  stage ('UPLOAD Artifactory'){
   def server = Artifactory.server('MyArtifactory')	
   def rtMaven = Artifactory.newMavenBuild()
   	rtMaven.resolver releaseRepo: 'maven', snapshotRepo: 'maven'
