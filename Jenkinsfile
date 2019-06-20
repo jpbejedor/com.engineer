@@ -13,10 +13,5 @@ node {
 	  withSonarQubeEnv('SonarQube') {
       sh "${scannerHome}/bin/sonar-scanner"
     }
-  }
-	
-  stage('UPLOAD'){
-	
-  curl -X PUT -u admin:password -T com.engineer-0.0.1-SNAPSHOT.war "http://localhost:8081/artifactory/lib-snapshot-local/om.engineer-0.0.1-SNAPSHOT.war"
-   }	
+  }	
   }
