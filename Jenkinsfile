@@ -15,12 +15,11 @@ node {
     }
   }	
 stage ('Artifactory Deploy'){
-def mvnHome = tool name: 'maven3.6.1', type: 'maven'
 def server = Artifactory.server('MyArtifactory')
 def rtMaven = Artifactory.newMavenBuild()
 rtMaven.resolver server: server, releaseRepo: 'lib-release-local', snapshotRepo: 'lib-snapshot-local'
 rtMaven.deployer server: server, releaseRepo: 'lib-release-local', snapshotRepo: 'lib-snapshot-local'
-rtMaven.tool = 'maven 3'
+rtMaven.tool = 'maven3.6.1'
 def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'install'
 server.publishBuildInfo buildInfo
 
