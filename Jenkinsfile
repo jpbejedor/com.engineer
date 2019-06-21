@@ -24,7 +24,7 @@ node {
   def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
   	server.publishBuildInfo buildInfo
 
-  deploy(“target/*.war”, localhost, “/Library/Tomcat/webapps”)
+  deploy(“target/com.engineer-0.0.1-SNAPSHOT.war”, localhost, “/Library/Tomcat/webapps”)
 	  
   }
 }
