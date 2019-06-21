@@ -31,5 +31,6 @@ node {
   def target = '/Library/Tomcat/webapps/'
 	  withCredentials([usernamePassword(credentialsId: 'tomcat', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 	  sh "sudo curl -u ${USERNAME}:{$PASSWORD} -T $source $target" 
+	  }
   } 	
 }
