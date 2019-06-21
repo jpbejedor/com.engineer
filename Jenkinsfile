@@ -29,7 +29,6 @@ node {
 	  sh "echo 'Deploying to Tomcat'"
   def source = '/Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/*.war'
   def target = '/Library/Tomcat/webapps/'
-	  	sh "cp $source $target"
-	  }
+	  sh "cp $source $target"
   } 	
 }
