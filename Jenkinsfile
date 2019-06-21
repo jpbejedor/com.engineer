@@ -32,5 +32,6 @@ node {
   def target = '/Library/Tomcat/webapps/'
 	  sh "cd $target"
 	  sh "ls"
+	  sh "pwd"
   } 	
 }
