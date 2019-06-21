@@ -25,7 +25,7 @@ node {
   	server.publishBuildInfo buildInfo  
   }
 	
-  stage ('DEPLOY'{
+  stage ('DEPLOY'){
 	  sh "echo 'Deploying to Tomcat'"
   } 	
 }
