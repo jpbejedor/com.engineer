@@ -28,6 +28,6 @@ node {
   stage ('DEPLOY'){
 	  sh "echo 'Deploying to Tomcat'"
   def source = '/Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/'
-	  sh "echo $source"
+	  sh "ls -ltr $source"
   } 	
 }
