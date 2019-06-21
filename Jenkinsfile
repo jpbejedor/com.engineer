@@ -30,7 +30,6 @@ node {
 	  sh "whoami"
   def source = '/Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/*.war'
   def target = '/Library/Tomcat/webapps/'
-	  sh "cd $target"
-	  sh "curl -O http://localhost:8081/artifactory/lib-snapshot-local/sonartutorial/com.engineer/0.0.1-SNAPSHOT/com.engineer-0.0.1-SNAPSHOT.war"
+	  sh "curl -O $target http://localhost:8081/artifactory/lib-snapshot-local/sonartutorial/com.engineer/0.0.1-SNAPSHOT/com.engineer-0.0.1-SNAPSHOT.war"
   } 	
 }
