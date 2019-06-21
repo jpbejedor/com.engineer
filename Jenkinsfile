@@ -27,6 +27,7 @@ node {
 	
   stage ('DEPLOY'){
 	  sh "echo 'Deploying to Tomcat'"
+	  sh "whoami"
   def source = '/Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/*.war'
   def target = '/Library/Tomcat/webapps/'
 	  sh "cp $source $target"
