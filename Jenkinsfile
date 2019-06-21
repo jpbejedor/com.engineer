@@ -23,8 +23,13 @@ node {
   	rtMaven.tool = 'maven3.6.1'
   def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
   	server.publishBuildInfo buildInfo
-
-  deploy(“http://localhost:8081/artifactory/lib-snapshot-local/sonartutorial/com.engineer/0.0.1-SNAPSHOT/com.engineer-0.0.1-SNAPSHOT.war”, localhost, “/Library/Tomcat/webapps”)
+	  
+  tomcat = new com.cb.web.Tomcat(hostname: "localhost", port: "8082", adminUser: "admin", adminPassword: "admin")
+  artifactName = "com.engineer-0.0.1-SNAPSHOT.war"	  
+  artifact = "target/${artifactName}"
+  util = new com.cb.util.BasicUtilities()
+  deployClosure = {war, url, id -> sh "curl --upload-file ${war} '${url}?path=/${id}&update=true'"}
+  tomcat.deploy(“artifact”, "deploy", deployClosure)
 	  
   }
 }
