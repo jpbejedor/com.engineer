@@ -26,6 +26,6 @@ node {
   }
 	
   stage ('DEPLOY'{
-	  echo "Deploying to Tomcat"
+	  sh "echo 'Deploying to Tomcat'"
   } 	
 }
