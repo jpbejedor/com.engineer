@@ -1,3 +1,4 @@
+tomcat = new com.cb.web.Tomcat(hostname: "localhost", port: "8082", adminUser: "admin", adminPassword: "admin")
 util = new com.cb.util.BasicUtilities()
 
 node {
@@ -26,7 +27,6 @@ node {
   def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
   	server.publishBuildInfo buildInfo
 	  
-  tomcat = new com.cb.web.Tomcat(hostname: "localhost", port: "8082", adminUser: "admin", adminPassword: "admin")
   artifactName = "com.engineer-0.0.1-SNAPSHOT.war"	  
   artifact = "target/${artifactName}"
   deployClosure = {war, url, id -> sh "curl --upload-file ${war} '${url}?path=/${id}&update=true'"}
