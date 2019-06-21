@@ -29,9 +29,9 @@ node {
 	  sh "echo 'Deploying to Tomcat'"
   def source = '/Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/*.war'
   def target = 'localhost:/Library/Tomcat/webapps/'
-	  withCredentials([usernamePassword(credentialsId: 'tomcat', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-	  	sh "echo $USERNAME $PASSWORD"
-		sh "sudo curl -u $USERNAME:$PASSWORD -T $source $target" 
+	  withCredentials([usernamePassword(credentialsId: 'tomcat', usernameVariable: 'admin', passwordVariable: 'admin')]) {
+	  	sh "echo $usernameVariable $passwordVariable"
+		sh "sudo curl -u $usernameVariable:$passwordVariable -T $source $target" 
 	  }
   } 	
 }
