@@ -23,5 +23,8 @@ node {
   	rtMaven.tool = 'maven3.6.1'
   def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
   	server.publishBuildInfo buildInfo
+
+  deploy(“target/.war”, localhost, “/Library/Tomcat/webapps”)
+	  
   }
 }
