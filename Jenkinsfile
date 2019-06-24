@@ -30,8 +30,6 @@ node {
 	  sh "whoami"
   def source = '/Users/Shared/Jenkins/Home/workspace/TestPipeLine/target/*.war'
   def target = '/Library/Tomcat/webapps/'
-	  sh "cd $target"
-	  sh "ls"
-	  sh "pwd"
+	  sh "cp $source $target"
   } 	
 }
