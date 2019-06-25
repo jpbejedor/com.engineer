@@ -15,16 +15,6 @@ node {
     }
   }
 	
-  stage ('UPLOAD Artifactory'){
-  def server = Artifactory.server('MyArtifactory')	
-  def rtMaven = Artifactory.newMavenBuild()
-  	rtMaven.resolver releaseRepo: 'maven', snapshotRepo: 'maven'
-  	rtMaven.deployer server: server, releaseRepo: 'lib-release-local', snapshotRepo: 'lib-snapshot-local'
-  	rtMaven.tool = 'maven3.6.1'
-  def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
-  	server.publishBuildInfo buildInfo  
-  }
-	
   stage ('DEPLOY'){
 	  sh "echo 'Deploying to Tomcat'"
 	  sh "whoami"
@@ -34,4 +24,14 @@ node {
 	  sh "cp $source $target"
 	  }
   } 	
+	
+  stage ('UPLOAD Artifactory'){
+  def server = Artifactory.server('MyArtifactory')	
+  def rtMaven = Artifactory.newMavenBuild()
+  	rtMaven.resolver releaseRepo: 'maven', snapshotRepo: 'maven'
+  	rtMaven.deployer server: server, releaseRepo: 'lib-release-local', snapshotRepo: 'lib-snapshot-local'
+  	rtMaven.tool = 'maven3.6.1'
+  def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+  	server.publishBuildInfo buildInfo  
+  }		
 }
