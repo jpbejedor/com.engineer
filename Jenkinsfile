@@ -11,9 +11,24 @@ node {
   stage('TEST'){
   def scannerHome = tool 'SonarQubeScanner'
 	withSonarQubeEnv('SonarQube') {
-      	sh "${scannerHome}/bin/sonar-scanner"
+      	sh "${scannerHome}/bin/sonar-scanner"	
     }
   }
+	
+   stage("Quality Gate Status Check"){
+          timeout(time: 1, unit: 'HOURS') {
+              def qg = waitForQualityGate()
+              if (qg.status != 'OK') {
+                   //slackSend baseUrl: 'https://hooks.slack.com/services/', 
+                   // channel: '#devops', 
+                    //color: 'danger', 
+                    //iconEmoji: '', 
+                    //message: 'SonarQube Analysis Failed!', 
+                   // teamDomain: 'DEVOPS', tokenCredentialId: 'Slack_Token', username: ''
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+              }
+          }
+      }
 	
   stage ('DEPLOY'){
 	  sh "echo 'Deploying to Tomcat'"
