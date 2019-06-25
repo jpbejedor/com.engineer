@@ -22,6 +22,7 @@ node {
                    //slackSend baseUrl: 'https://hooks.slack.com/services/', 
                    // channel: '#devops', 
                     //color: 'danger', 
+		      sh "echo 'auto deployment every minute'"
                     //iconEmoji: '', 
                     //message: 'SonarQube Analysis Failed!', 
                    // teamDomain: 'DEVOPS', tokenCredentialId: 'Slack_Token', username: ''
